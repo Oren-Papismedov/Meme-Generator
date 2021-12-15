@@ -9,16 +9,17 @@ function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
 
-function onInitCanvas() {
+function onInitCanvas(elImg) {
+    // console.log(elImg);
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    addListeners()
-    renderMeme()
+    // addListeners()
+    renderMeme(elImg)
 
 }
 
-function renderMeme() {
+function renderMeme(elImg) {
     
-    gCtx.drawImage(0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 
 }
