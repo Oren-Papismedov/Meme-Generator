@@ -27,35 +27,39 @@
             </div>
         </header>
 
+    <main class="main-content main-layout">
+
+        <section class="meme-editor">
+            <h1>MEME EDITOR</h1>
+            <div class="canvas-container flex space-between">
+                <canvas 
+                id="my-canvas" 
+                height="400" 
+                width="400" 
+                onclick="canvasClicked(event)">
+            </canvas>
+            <div class="controls">
+                <input type="text" placeholder="Enter Line Text" onchange="onChangeLine(this.value)">
+            </div>
+        </div>
     
-    
-    <section class="gallery">Gallery</section>
+</section>
+
+<section class="gallery">Gallery</section>
 
 
+</main>
 
+<footer>
+    <div class="footer-container main-layout flex align-center">
 
+        <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
 
-
-
-
-
-
-
-
-
-
-
-
-    <section class="editor">Editor</section>
-
-
-
-
-
-
-
+</footer>
 
 
     <script src="js/main.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/meme-service.js"></script>
 </body>
 </html>
