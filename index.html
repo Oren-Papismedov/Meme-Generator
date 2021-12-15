@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,59 +8,84 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Meme Generator</title>
 </head>
-<body>
+
+<body onload="onInitGallery()">
     <div onclick="toggleMenu()" class="main-screen"> </div>
 
-        <header class="main-header">
-            
-            <div class="header-container main-layout flex space-between align-center">
+    <header class="main-header">
 
-                <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
-                <nav class="main-nav">
-                    <ul class="clean-list flex nav-container">
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Memegen</a></li>
-                        <li><a href="#">Saved Memes</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                </nav>
-                <button class="btn-menu" onclick="toggleMenu()">☰</button>
-            </div>
-        </header>
+        <div class="header-container main-layout flex space-between align-center">
+
+            <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
+            <nav class="main-nav">
+                <ul class="clean-list flex nav-container">
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Memegen</a></li>
+                    <li><a href="#">Saved Memes</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <button class="btn-menu" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
 
     <main class="main-content main-layout">
 
         <section class="meme-editor">
             <h1>MEME EDITOR</h1>
             <div class="canvas-container flex space-between">
-                <canvas 
-                id="my-canvas" 
-                height="400" 
-                width="400" 
-                onclick="canvasClicked(event)">
-            </canvas>
-            <div class="controls">
-                <input type="text" placeholder="Enter Line Text" onchange="onChangeLine(this.value)">
+                <canvas id="my-canvas"
+                 height="500"
+                  width="500"
+                  onclick="canvasClicked(event)">
+                </canvas>
+                <div class="controls">
+                    <input type="text" placeholder="Enter Line Text" onchange="onChangeLine(this.value)">
+                </div>
             </div>
-        </div>
-    
-</section>
 
-<section class="gallery">Gallery</section>
+        </section>
+
+        <section class="gallery">
+            <h1>Gallery</h1>
+            <div class="imgs-container">
+                <!-- <img src="img/img/1.jpg">
+                <img src="img/img/2.jpg">
+                <img src="img/img/3.jpg">
+                <img src="img/img/4.jpg">
+                <img src="img/img/5.jpg">
+                <img src="img/img/6.jpg">
+                <img src="img/img/7.jpg">
+                <img src="img/img/8.jpg">
+                <img src="img/img/9.jpg">
+                <img src="img/img/10.jpg">
+                <img src="img/img/11.jpg">
+                <img src="img/img/12.jpg">
+                <img src="img/img/13.jpg">
+                <img src="img/img/14.jpg">
+                <img src="img/img/15.jpg">
+                <img src="img/img/16.jpg">
+                <img src="img/img/17.jpg">
+                <img src="img/img/18.jpg"> -->
+            </div>
+        </section>
 
 
-</main>
+    </main>
 
-<footer class="main-footer">
-    <div class="footer-container main-layout flex align-center">
+    <footer class="main-footer">
+        <div class="footer-container main-layout flex align-center">
 
-        <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
+            <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
 
-</footer>
+    </footer>
 
 
     <script src="js/main.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/gallery-service.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/meme-service.js"></script>
 </body>
+
 </html>
