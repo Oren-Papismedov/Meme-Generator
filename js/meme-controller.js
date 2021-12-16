@@ -14,33 +14,40 @@ function onInitCanvas(elImg) {
     // console.log(elImg);
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    // gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     // addListeners()
+    initMeme()
+    document.querySelector('.input').value = ''
     steImg(elImg.id)
-    const MEME = getMeme()
-    renderMeme(MEME)
+    renderMeme()
     addListeners()
 
 }
 
-function renderMeme(meme) {
+function renderMeme() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+    const meme = getMeme()
+    const elIMG = document.getElementById(meme.selectedImgId)
+    gCtx.drawImage(elIMG, 0, 0, gElCanvas.width, gElCanvas.height)
     const TXT = meme.lines[meme.selectedLineIdx].txt
     const SIZE = meme.lines[meme.selectedLineIdx].size
     const COLOR = meme.lines[meme.selectedLineIdx].color
     const STROKE = meme.lines[meme.selectedLineIdx].stroke
     const FONT = meme.lines[meme.selectedLineIdx].font
 
-    drawText(TXT ,SIZE, COLOR , STROKE , FONT)
+    drawText(TXT, SIZE, COLOR, STROKE, FONT)
     // console.log(TXT);
 }
 
 function onChangeText(text) {
-    drawText(text)
+    text = document.querySelector('.input').value
+    changeText(text)
+    renderMeme()
 
 }
 
 function addListeners() {
-    document.querySelector('.input').addEventListener('input', drawText)
+    document.querySelector('.input').addEventListener('input', onChangeText)
     // addMouseListeners()
     // addTouchListeners()
     // window.addEventListener('resize', () => {
@@ -107,9 +114,8 @@ function getEvPos(ev) {
 
 
 
-function drawText(txt,size = 120, color = 'white', stroke = 'black', font = 'impact') {
+function drawText(txt, size = 100, color = 'white', stroke = 'black', font = 'impact') {
     // console.log(gCtx)
-    txt = document.querySelector('.input').value
     const currFont = `${size}px ${font}`
     gCtx.font = currFont
     gCtx.fillStyle = color
@@ -117,4 +123,30 @@ function drawText(txt,size = 120, color = 'white', stroke = 'black', font = 'imp
     gCtx.lineWidth = '6'
     gCtx.strokeStyle = stroke
     gCtx.strokeText(txt, 20, gElCanvas.height / 2)
+}
+
+function onIncreaseFont() {
+    increaseFont()
+    renderMeme()
+}
+
+function onDecreaseFont() {
+    decreaseFont()
+    renderMeme()
+}
+
+function onSetColor(color) {
+    setColor(color)
+    renderMeme()
+}
+
+function onSetStroke(stroke) {
+    setStroke(stroke)
+    renderMeme()
+}
+
+function onClearText() {
+    const isSure = setClearText()
+    renderMeme()
+    if (isSure) document.querySelector('.input').value = ''
 }

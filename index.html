@@ -23,7 +23,7 @@
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#">Memegen</a></li>
                     <li><a href="#">Saved Memes</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#main-footer">About</a></li>
                 </ul>
             </nav>
             <button class="btn-menu" onclick="toggleMenu()">☰</button>
@@ -35,27 +35,32 @@
         <section class="meme-editor">
             <h1>MEME EDITOR</h1>
             <div class="canvas-container flex space-between">
-                <canvas id="my-canvas"
-                 height="500"
-                  width="500"
-                  onclick="canvasClicked(event)">
+                <canvas id="my-canvas" height="500" width="500" onclick="canvasClicked(event)">
                 </canvas>
                 <div class="controls">
-                    <input class="input" type="text" placeholder="Enter Text" onchange="onChangeText(this.value)">
-                    <button class="up-and-down"> <img src="Icons/up-and-down-opposite-double-arrows-side-by-side.png"> </button>
+                    <input class="input" type="text" placeholder="Enter Text">
+                    <button class="up-and-down"> <img src="Icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                    </button>
                     <button class="add"> <img src="Icons/add.png"> </button>
-                    <button class="trash"> <img src="Icons/trash.png"> </button>
-                    <button class="increase"> <img src="Icons/increase font - icon.png"> </button>
-                    <button class="decrease"> <img src="Icons/decrease font - icon.png"> </button>
+                    <button class="trash"> <img src="Icons/trash.png" onclick="onClearText()"> </button>
+                    <button class="increase" onclick="onIncreaseFont()"> <img src="Icons/increase font - icon.png">
+                    </button>
+                    <button class="decrease" onclick="onDecreaseFont()"> <img src="Icons/decrease font - icon.png">
+                    </button>
                     <button class="align-to-left"> <img src="Icons/align-to-left.png"> </button>
                     <button class="center-text"> <img src="Icons/center-text-alignment.png"> </button>
                     <button class="align-to-right"> <img src="Icons/align-to-right.png"> </button>
                     <select class="font" name="" id=""></select>
-                    <button class="text-stroke"> <img src="Icons/text-stroke.png"> </button>
-                    <button class="paint"> <img src="Icons/paint-board-and-brush.png"> </button>
+                    <button class="text-stroke"> <img src="Icons/text-stroke.png">
+                        </label>
+                        <input class="btn-stroke" type="color" name="color" id="color"
+                            onchange="onSetStroke(this.value)" /> </button></button>
+                    <button class="paint"> <img src="Icons/paint-board-and-brush.png"> </label>
+                        <input class="btn-text" type="color" name="color" id="color"
+                            onchange="onSetColor(this.value)" /> </button>
                     <button class="download">download</button>
                     <button class="share">share</button>
-            </div>
+                </div>
 
         </section>
 
@@ -86,9 +91,34 @@
 
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer" id="main-footer">
         <div class="footer-container main-layout flex align-center">
 
+            <div class="team-member flex">
+                <img class="mx-auto rounded-circle" src="img/about/14.jpg" alt="">
+                <div class="info-container flex">
+                    <h4>Oren Papismedov</h4>
+                    <p class="text-muted">Full Stack Developer</p>
+                    <ul class="social-buttons flex">
+                        <li class="list-inline-item">
+                            <a target=”_blank”
+                                href="https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%9F_%D7%A4%D7%A4%D7%99%D7%A1%D7%9E%D7%93%D7%95%D7%91">
+                                <i class="fa fa-wikipedia-w"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a target=”_blank” href="https://www.facebook.com/oren.papi/">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a target=”_blank” href="https://www.linkedin.com/in/oren-papismedov-a51aba217/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
 
     </footer>
