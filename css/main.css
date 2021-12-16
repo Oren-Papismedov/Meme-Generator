@@ -10,7 +10,7 @@ body {
     background-color: #3E2C41;
     font-size: 1rem;
     margin: 0;
-    width: 100vw;
+    width: 99vw;
     min-height: 100vh;
     display: grid;
     grid-template-rows: 70px 1fr 200px;
@@ -134,11 +134,138 @@ body.menu-open .main-screen {
 .main-content {
     grid-area: main;
 }
+.main-content .controls img {
+    max-width: 40px;
+    cursor: pointer;
+
+}
+
+.controls {
+    width: 50%;
+    display: grid;
+    grid-template: repeat(7 , 1fr) / repeat(5, 20%);
+}
+
+.controls .input {
+    grid-area: 1 /1 /2 /6 ;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: #2C061F ;
+    color: azure;
+    /* box-shadow: 0px 0px 60px; */
+}
+
+.controls .up-and-down {
+    grid-area: 2/2/3/3;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.controls .add {
+    grid-area: 2/3/3/4;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .trash {
+    grid-area: 2/4/3/5;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    
+}
+
+.controls .increase {
+    grid-area: 3/1 /4/ 2;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .decrease {
+    grid-area: 3 /2 /4/ 3;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .align-to-left {
+    grid-area: 3 /3 /4/ 4;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .center-text {
+    grid-area: 3 /4 /4/ 5;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .align-to-right {
+    grid-area: 3 /5 /4/ 6;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .font {
+    grid-area: 4 /1 /5/ 4;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .text-stroke {
+    grid-area: 4 /4 /5/ 5;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .paint {
+    grid-area: 4 /5 /5/ 6;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.controls .download {
+    grid-area: 7 /4 /8/ -2;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.controls .share {
+    grid-area: 7 /2 /8/ -4;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+
+
 
 /* GALLERY */
 
 .gallery img {
     max-width: 100px;
+    cursor: pointer;
+}
+.gallery img:hover {
+    border: azure 2px solid;
 }
 .gallery h1 {
     color: azure;
@@ -218,6 +345,18 @@ body.menu-open .main-screen {
     .header-container .logo {
         margin-inline-start: 10px;
     }
+    .main-content .canvas-container {
+        align-items: center;
+    }
+
+    .main-content .controls {
+        width: 80%;
+        height: 380px;
+    }
+
+    .main-content .controls img {
+        width: 20px;
+    }
 }
 
 /* SMALL */
@@ -249,3 +388,67 @@ body.menu-open .main-screen {
 
 }
 
+
+/* <!-- HTML !-->
+<button class="button-56" role="button">Button 56</button> */
+
+/* CSS */
+.controls button {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.controls button:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.controls button:hover:after {
+  transform: translate(0, 0);
+}
+
+.controls button:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.controls button:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .controls button {
+    padding: 0 40px;
+  }
+}
+
+/* .controls button */

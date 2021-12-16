@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7a3aba81fd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
     <title>Meme Generator</title>
 </head>
@@ -19,7 +20,7 @@
             <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
             <nav class="main-nav">
                 <ul class="clean-list flex nav-container">
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#">Memegen</a></li>
                     <li><a href="#">Saved Memes</a></li>
                     <li><a href="#">About</a></li>
@@ -40,13 +41,25 @@
                   onclick="canvasClicked(event)">
                 </canvas>
                 <div class="controls">
-                    <input type="text" placeholder="Enter Line Text" onchange="onChangeText(this.value)">
-                </div>
+                    <input class="input" type="text" placeholder="Enter Text" onchange="onChangeText(this.value)">
+                    <button class="up-and-down"> <img src="Icons/up-and-down-opposite-double-arrows-side-by-side.png"> </button>
+                    <button class="add"> <img src="Icons/add.png"> </button>
+                    <button class="trash"> <img src="Icons/trash.png"> </button>
+                    <button class="increase"> <img src="Icons/increase font - icon.png"> </button>
+                    <button class="decrease"> <img src="Icons/decrease font - icon.png"> </button>
+                    <button class="align-to-left"> <img src="Icons/align-to-left.png"> </button>
+                    <button class="center-text"> <img src="Icons/center-text-alignment.png"> </button>
+                    <button class="align-to-right"> <img src="Icons/align-to-right.png"> </button>
+                    <select class="font" name="" id=""></select>
+                    <button class="text-stroke"> <img src="Icons/text-stroke.png"> </button>
+                    <button class="paint"> <img src="Icons/paint-board-and-brush.png"> </button>
+                    <button class="download">download</button>
+                    <button class="share">share</button>
             </div>
 
         </section>
 
-        <section class="gallery">
+        <section id='gallery' class="gallery">
             <h1>Gallery</h1>
             <div class="imgs-container">
                 <!-- <img src="img/img/1.jpg">
