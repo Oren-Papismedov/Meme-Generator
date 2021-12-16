@@ -1,21 +1,30 @@
 'use strict'
 
 
-
-function getMeme() {
-
-}
-
-
 var gMeme = {
-    selectedImgId: 5,
+    selectedImgId: 0,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
-            size: 20,
+            txt: 'hi',
+            size: 50,
             align: 'left',
-            color: 'red'
+            color: 'white',
+            stroke: 'black',
+            font: 'impact',
+            x: 250,
+			y: 50,
         }
     ]
+}
+
+
+function steImg(imgId) {
+    // console.log(imgId);
+    // console.log(gMeme.selectedImgId);
+    gMeme.selectedImgId = imgId
+}
+
+function getMeme() {
+    return gMeme
 }
