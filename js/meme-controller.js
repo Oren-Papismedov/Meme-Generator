@@ -34,8 +34,9 @@ function renderMeme() {
     const COLOR = meme.lines[meme.selectedLineIdx].color
     const STROKE = meme.lines[meme.selectedLineIdx].stroke
     const FONT = meme.lines[meme.selectedLineIdx].font
+    const ALIGN = meme.lines[meme.selectedLineIdx].align
 
-    drawText(TXT, SIZE, COLOR, STROKE, FONT)
+    drawText(TXT, SIZE, COLOR, STROKE, FONT, ALIGN)
     // console.log(TXT);
 }
 
@@ -48,8 +49,8 @@ function onChangeText(text) {
 
 function addListeners() {
     document.querySelector('.input').addEventListener('input', onChangeText)
-    // addMouseListeners()
-    // addTouchListeners()
+    addMouseListeners()
+    addTouchListeners()
     // window.addEventListener('resize', () => {
     //     resizeCanvas()
     //     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
@@ -59,40 +60,41 @@ function addListeners() {
 }
 
 function addMouseListeners() {
-    gElCanvas.addEventListener('mousemove', onMove)
+    // gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mousedown', onDown)
     gElCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
-    gElCanvas.addEventListener('touchmove', onMove)
+    // gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchstart', onDown)
     gElCanvas.addEventListener('touchend', onUp)
 }
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    if (!isCircleClicked(pos)) return
-    setCircleDrag(true)
+    // console.log(pos);
+    if (!isTextClicked(pos)) return
+    setTextDrag(true)
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
 
 }
 
-function onMove(ev) {
-    const circle = getCircle();
-    if (!circle.isDrag) return
-    const pos = getEvPos(ev)
-    const dx = pos.x - gStartPos.x
-    const dy = pos.y - gStartPos.y
-    moveCircle(dx, dy)
-    gStartPos = pos
-    renderCanvas()
+// function onMove(ev) {
+//     const circle = getCircle();
+//     if (!circle.isDrag) return
+//     const pos = getEvPos(ev)
+//     const dx = pos.x - gStartPos.x
+//     const dy = pos.y - gStartPos.y
+//     moveCircle(dx, dy)
+//     gStartPos = pos
+//     renderCanvas()
 
-}
+// }
 
 function onUp() {
-    setCircleDrag(false)
+    setTextDrag(false)
     document.body.style.cursor = 'grab'
 }
 
@@ -114,15 +116,32 @@ function getEvPos(ev) {
 
 
 
-function drawText(txt, size = 100, color = 'white', stroke = 'black', font = 'impact') {
+function drawText(txt, size = 80, color = 'white', stroke = 'black', font = 'impact', align = 'center') {
+    let xStart
     // console.log(gCtx)
     const currFont = `${size}px ${font}`
     gCtx.font = currFont
     gCtx.fillStyle = color
-    gCtx.fillText(txt, 20, gElCanvas.height / 2);
-    gCtx.lineWidth = '6'
+    gCtx.textAlign = align
+
+    switch (align) {
+        case 'left': xStart = 50
+
+            break;
+
+        case 'center': xStart = 250
+
+            break;
+
+        case 'right': xStart = 450
+
+            break
+    }
+
+    gCtx.fillText(txt, xStart, 70);
+    gCtx.lineWidth = '5'
     gCtx.strokeStyle = stroke
-    gCtx.strokeText(txt, 20, gElCanvas.height / 2)
+    gCtx.strokeText(txt, xStart, 70)
 }
 
 function onIncreaseFont() {
@@ -149,4 +168,10 @@ function onClearText() {
     const isSure = setClearText()
     renderMeme()
     if (isSure) document.querySelector('.input').value = ''
+}
+
+function onAlignText(id) {
+    // console.log(id);
+    alignText(id)
+    renderMeme()
 }

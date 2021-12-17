@@ -9,13 +9,14 @@ function initMeme() {
         lines: [
             {
                 txt: '',
-                size: 100,
+                size: 80,
                 align: 'left',
                 color: 'white',
                 stroke: 'black',
                 font: 'impact',
-                x: 250,
+                x: 50,
                 y: 50,
+                isDrag: false,
             }
         ]
     }
@@ -64,14 +65,26 @@ function setClearText() {
     }
 }
 
-// function clearText() {
-//     const isSure = confirm('are you sure?')
-//     if (isSure){
-//         const lines = gMeme.lines
-//         lines.forEach(function (line) {
-//             line.txt = ''
-//         });
-//         return isSure
-//     }
-// }
+function alignText(id) {
+    const align = id
+    gMeme.lines[gMeme.selectedLineIdx].align = align
+}
+
+function isTextClicked(clickedPos) {
+    const posX = gMeme.lines[gMeme.selectedLineIdx].x
+    const posY = gMeme.lines[gMeme.selectedLineIdx].y
+    const distanceY = posY - clickedPos.y
+    // console.log(clickedPos.x);
+    return (distanceY <= gMeme.lines[gMeme.selectedLineIdx].size
+         && distanceY > 0 
+         && clickedPos.x > 50 
+         && clickedPos.x < 450 
+           )
+}
+
+function setTextDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+
 

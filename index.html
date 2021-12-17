@@ -35,7 +35,7 @@
         <section class="meme-editor">
             <h1>MEME EDITOR</h1>
             <div class="canvas-container flex space-between">
-                <canvas id="my-canvas" height="500" width="500" onclick="canvasClicked(event)">
+                <canvas id="my-canvas" height="500" width="500">
                 </canvas>
                 <div class="controls">
                     <input class="input" type="text" placeholder="Enter Text">
@@ -47,9 +47,9 @@
                     </button>
                     <button class="decrease" onclick="onDecreaseFont()"> <img src="Icons/decrease font - icon.png">
                     </button>
-                    <button class="align-to-left"> <img src="Icons/align-to-left.png"> </button>
-                    <button class="center-text"> <img src="Icons/center-text-alignment.png"> </button>
-                    <button class="align-to-right"> <img src="Icons/align-to-right.png"> </button>
+                    <button class="align-to-left" id="left" onclick="onAlignText(id)"> <img src="Icons/align-to-left.png"> </button>
+                    <button class="center-text" id="center" onclick="onAlignText(id)"> <img src="Icons/center-text-alignment.png"> </button>
+                    <button class="align-to-right" id="right" onclick="onAlignText(id)"> <img src="Icons/align-to-right.png"> </button>
                     <select class="font" name="" id=""></select>
                     <button class="text-stroke"> <img src="Icons/text-stroke.png">
                         </label>
