@@ -357,7 +357,7 @@ color: #e5e5e5;
     margin-right: 5px;
 }
 .controls .download {
-    grid-area: 7 /4 /8/ -2;
+    grid-area: 7 /3 /8/ 4;
     border-radius: 10px;
     margin-bottom: 5px;
     margin-left: 5px;
@@ -385,7 +385,7 @@ color: #e5e5e5;
     cursor: pointer;
 }
 .controls .upload {
-    grid-area: 7 /3 /8/ 4;
+    grid-area: 7 /4 /8 /-2;
     border-radius: 10px;
     margin-bottom: 5px;
     margin-left: 5px;
