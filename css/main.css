@@ -160,7 +160,7 @@ body.modal-open .main-screen {
 /* MAIN */
 
 .main-content .modal {
-    position: fixed;
+    position: absolute;
     background-color: whitesmoke;
     width: 50%;
     min-height: 501px;
@@ -473,10 +473,12 @@ color: #e5e5e5;
 }
 
 .team-member img {
+    
     width: 200px;
     height: 200px;
     border: 7px solid rgba(255, 255, 255, 0.527);
     border-radius: 50%;
+    margin-left: 100%;
 }
 
 .team-member {
@@ -512,6 +514,41 @@ color: #e5e5e5;
     margin-top: 30px;
 }
 
+/* ========================== */
+
+/* saved memes modal*/
+body.modal-open .main-content .modal .imgs-container {
+    width: 100%;
+display: grid;
+padding: 10px;
+}
+
+body.modal-open .main-content .modal .imgs-container .meme-card{
+    display: block;
+width: 100%;
+}
+
+body.modal-open .main-content .modal .imgs-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 250px;
+padding: 2px;
+margin: 0px auto;
+}
+body.modal-open .main-content .modal .imgs-container .lines {
+flex-direction: column;
+/* margin-inline-start: 10px; */
+}
+body.modal-open .main-content .modal .imgs-container .lines p{
+    display: block;
+font-size: 1em;
+padding: 0px;
+margin: 2px auto;
+color: azure;
+
+}
+/* ===================== */
+
 /* BREAKPOINTS */
 
 /* MOBILE ONLY */
@@ -530,7 +567,7 @@ color: #e5e5e5;
     .main-footer {
         display: flex;
         flex-direction: column;
-        min-height: 200px;
+        min-height: 400px;
     }
     .gallery .imgs-container{
         grid-template: auto/repeat(2, 1fr);
@@ -539,6 +576,7 @@ color: #e5e5e5;
 
     .main-content .modal .team-member{
         flex-direction: column;
+       
     }
     .main-content .modal{
         flex-direction: column;
@@ -548,6 +586,11 @@ color: #e5e5e5;
         top: 10%;
         left: 20%;
         
+    }
+    .team-member img {
+    
+        
+        margin-left: 0%;
     }
 
     /* hamburger */
@@ -609,6 +652,11 @@ color: #e5e5e5;
         padding-left: 0;
         padding-right: 0;
     }
+    .team-member img {
+    
+        
+        margin-left: 20%;
+    }
     
 }
 /* MEDIUM */
@@ -626,6 +674,15 @@ color: #e5e5e5;
         grid-template: auto/repeat(3, 1fr);
 
     }
+    .team-member img {
+    
+        
+        margin-left: 25%;
+    }
+    body.modal-open .main-content .modal .imgs-container {
+        grid-template: auto/repeat(2,50%);
+        }
+    
     
 }
 /* LARGE */
@@ -637,6 +694,15 @@ color: #e5e5e5;
         grid-template: auto/repeat(4, 1fr);
     
     }
+    .team-member img {
+    
+        
+        margin-left: 100%;
+    }
+    body.modal-open .main-content .modal .imgs-container {
+        grid-template: auto/repeat(3,33%);
+        }
+    
 
 }
 

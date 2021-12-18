@@ -262,3 +262,10 @@ function onSaveMeme(){
     alert('saved MeMe')
 }
 
+function onSetMeme(meme,elImg){
+    
+    onInitCanvas(elImg)
+    setMeme(meme)
+    renderMeme()
+}
+

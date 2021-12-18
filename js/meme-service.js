@@ -229,3 +229,10 @@ function saveMeme() {
 
     
 }
+
+function setMeme(meme) {
+    // console.log(meme)
+    // initMeme()
+    gMeme.lines = meme.lines
+    
+}

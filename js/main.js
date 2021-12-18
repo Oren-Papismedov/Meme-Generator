@@ -19,6 +19,30 @@ function _renderModal(value) {
     switch (value) {
         case 'saved-memes':
             // console.log('hi');
+            const memes = loadFromStorage(STORAGE_KEY)
+            let strHtmls = `<div class="imgs-container">`
+            let lineTxtStrs 
+            const strs = memes.map(function (meme,i) {
+                lineTxtStrs = meme.lines.map(function (line) {
+                    return `
+                    <p>${line.txt}</p>
+                    `
+                });
+                
+                const str =`
+                <div class="meme-card flex">
+                <img id="${i}" onclick="onRestoreMeme(this)" src="img/img/${meme.selectedImgId}.jpg">
+                <div class="lines flex">
+                ${lineTxtStrs.join('')}
+                </div>
+                </div>
+                `
+                return str
+            });
+            strHtmls += `${strs.join('')}</div>` 
+            // console.log(strHtmls)
+            elModal.innerHTML = strHtmls
+
 
             break;
             case 'about':
@@ -53,4 +77,15 @@ function _renderModal(value) {
             
     }
 
+}
+
+function onRestoreMeme(elImg){
+    const memes = loadFromStorage(STORAGE_KEY)
+    // console.log(elImg)
+    memes.forEach(function (meme,i) {
+        // console.log(i)
+        if (i+'' === elImg.id) onSetMeme(meme,elImg)
+    });
+    toggleModal()
+    
 }
