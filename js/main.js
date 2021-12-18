@@ -31,7 +31,7 @@ function _renderModal(value) {
                 
                 const str =`
                 <div class="meme-card flex">
-                <img id="${i}" onclick="onRestoreMeme(this)" src="img/img/${meme.selectedImgId}.jpg">
+                <img id="${meme.selectedImgId}" onclick="onRestoreMeme(this)" src="img/img/${meme.selectedImgId}.jpg">
                 <div class="lines flex">
                 ${lineTxtStrs.join('')}
                 </div>
