@@ -2,15 +2,36 @@
     box-sizing: border-box;
 }
 
+/* FONTS */
+@font-face {
+    font-family: Montserrat;
+    src: url('../Fonts/Montserrat/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: Rubik;
+    src: url('../Fonts//Rubik/RubikBeastly-Regular.ttf');
+}
+@font-face {
+    font-family: Karantina;
+    src: url('../Fonts//Karantina/Karantina-Bold.ttf');
+}
+@font-face {
+    font-family: Gloria;
+    src: url('../Fonts//Gloria/GloriaHallelujah-Regular.ttf');
+}
+
 html {
     font-family: Montserrat;
+    max-width: 100%;
+    overflow-x: hidden;
+
 }
 
 body {
     background-color: #3E2C41;
     font-size: 1rem;
     margin: 0;
-    width: 99vw;
+    max-width: 100%;
     min-height: 100vh;
     display: grid;
     grid-template-rows: 70px 1fr 200px;
@@ -38,11 +59,11 @@ body.menu-open .main-screen {
     opacity: 1;
 }
 
-/* FONTS */
-@font-face {
-    font-family: Montserrat;
-    src: url('../Fonts/Montserrat/Montserrat-Regular.ttf');
+body.modal-open .main-screen {
+    pointer-events: auto;
+    opacity: 1;
 }
+
 
 /* HELPERS */
 
@@ -68,6 +89,10 @@ body.menu-open .main-screen {
     max-width: 981px;
     margin: 0 auto;
 
+}
+
+.justify-content{
+    justify-content: center;
 }
 
 /* HEADER */
@@ -133,6 +158,33 @@ body.menu-open .main-screen {
 }
 
 /* MAIN */
+
+.main-content .modal {
+    position: fixed;
+    background-color: whitesmoke;
+    width: 50%;
+    min-height: 501px;
+    top:  21%;
+    left: 30%;
+    right: 65%;
+    border: black 7px solid;
+    text-align: center;
+    z-index: 10;
+    display: none;
+    transition: 1.5s
+
+}
+
+body.modal-open .main-content .modal{
+    display: flex;
+    background-color: rgba(8, 7, 10, 0.966);
+    font-size: 1.5rem;
+}
+
+input.placeholder {
+color: #e5e5e5;
+
+}
 .main-content {
     grid-area: main;
 }
@@ -284,6 +336,11 @@ body.menu-open .main-screen {
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
+    font-size: x-large;
+    text-align: center;
+    background-color: #2C061F;
+    font-family: Montserrat;
+    color: lemonchiffon;
 }
 .controls .text-stroke {
     grid-area: 4 /4 /5/ 5;
@@ -307,8 +364,28 @@ body.menu-open .main-screen {
     margin-right: 5px;
     cursor: pointer;
 }
+.controls .download a{
+   text-decoration: none;
+   color: inherit;
+}
 .controls .share {
     grid-area: 7 /2 /8/ -4;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.controls .save {
+    grid-area: 7 /-6 /8/ -5;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.controls .upload {
+    grid-area: 7 /3 /8/ 4;
     border-radius: 10px;
     margin-bottom: 5px;
     margin-left: 5px;
@@ -319,9 +396,9 @@ body.menu-open .main-screen {
 .btn-text {
     width: 100%;
     height: 100%;
-	top: 50%;
+	/* top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%); */
 	z-index: 1;
 	opacity: 0;
 	position: absolute;
@@ -330,14 +407,20 @@ body.menu-open .main-screen {
 .btn-stroke {
     width: 100%;
     height: 100%;
-	top: 50%;
+	/* top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%); */
 	z-index: 1;
 	opacity: 0;
 	position: absolute;
     cursor: pointer;
 }
+
+.paint img {
+    position: absolute;
+}
+
+
 
 
 
@@ -345,12 +428,17 @@ body.menu-open .main-screen {
 
 /* GALLERY */
 
+.gallery .imgs-container{
+    display: grid;
+    grid-template: auto/repeat(4, 1fr);
+}
 .gallery img {
-    max-width: 100px;
+    border: 1px solid #2C061F;
+    max-width: 100%;
     cursor: pointer;
 }
 .gallery img:hover {
-    border: azure 2px solid;
+    border: azure 5px solid;
 }
 .gallery h1 {
     color: azure;
@@ -363,6 +451,7 @@ body.menu-open .main-screen {
 
 .meme-editor {
     width: 100%;
+    display: none;
 }
 .meme-editor h1{
     color: azure;
@@ -370,6 +459,8 @@ body.menu-open .main-screen {
 
 /* FOOTER */
 .main-footer {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 200px;
     background-color: #2C061F;
@@ -389,13 +480,15 @@ body.menu-open .main-screen {
 }
 
 .team-member {
-    color: white;
+    color: rgb(255, 255, 255);
+    justify-content:center;
+    align-items: center;
 }
 
 .social-buttons {
     list-style-type: none;
     text-decoration: none;
-    color: white;
+    color: rgb(170, 147, 147);
 }
 
 .info-container {
@@ -412,16 +505,20 @@ body.menu-open .main-screen {
 
 .info-container ul li a i {
     margin-inline-end: 30px;
-    color: white;
+    color: rgb(190, 33, 33);
 }
-
+.coffy-rights{
+    color: whitesmoke;
+    margin-top: 30px;
+}
 
 /* BREAKPOINTS */
 
 /* MOBILE ONLY */
 @media (max-width: 900px) {
+    
     body {
-        width: 100vw;
+        width: 100%;
     }
     .main-content .canvas-container {
         flex-direction: column;
@@ -434,6 +531,23 @@ body.menu-open .main-screen {
         display: flex;
         flex-direction: column;
         min-height: 200px;
+    }
+    .gallery .imgs-container{
+        grid-template: auto/repeat(2, 1fr);
+
+    }
+
+    .main-content .modal .team-member{
+        flex-direction: column;
+    }
+    .main-content .modal{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        top: 10%;
+        left: 20%;
+        
     }
 
     /* hamburger */
@@ -495,6 +609,7 @@ body.menu-open .main-screen {
         padding-left: 0;
         padding-right: 0;
     }
+    
 }
 /* MEDIUM */
 @media (min-width: 900px) {
@@ -507,11 +622,20 @@ body.menu-open .main-screen {
     .btn-menu {
         display: none;
     }
+    .gallery .imgs-container{
+        grid-template: auto/repeat(3, 1fr);
+
+    }
+    
 }
 /* LARGE */
 @media (min-width: 1100px) {
     .main-layout {
         max-width: 1060px;
+    }
+    .gallery .imgs-container{
+        grid-template: auto/repeat(4, 1fr);
+    
     }
 
 }
@@ -521,5 +645,6 @@ body.menu-open .main-screen {
     padding: 0 40px;
   }
 }
+
 
 /* .controls button */

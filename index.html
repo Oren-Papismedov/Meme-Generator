@@ -11,7 +11,7 @@
 </head>
 
 <body onload="onInitGallery()">
-    <div onclick="toggleMenu()" class="main-screen"> </div>
+    <div onclick="toggle()" class="main-screen"> </div>
 
     <header class="main-header">
 
@@ -21,9 +21,9 @@
             <nav class="main-nav">
                 <ul class="clean-list flex nav-container">
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#">Memegen</a></li>
-                    <li><a href="#">Saved Memes</a></li>
-                    <li><a href="#main-footer">About</a></li>
+                    <li><a href="#meme-editor">Memegen</a></li>
+                    <li onclick="toggleModal(this.id)" id="saved-memes"><a href="#">Saved Memes</a></li>
+                    <li onclick="toggleModal(this.id)" id="about"><a href="#">About</a></li>
                 </ul>
             </nav>
             <button class="btn-menu" onclick="toggleMenu()">☰</button>
@@ -31,38 +31,58 @@
     </header>
 
     <main class="main-content main-layout">
+        <div class="modal flex align-center">
+            
+        </div>
 
-        <section class="meme-editor">
+        <section class="meme-editor" id="meme-editor">
             <h1>MEME EDITOR</h1>
             <div class="canvas-container flex space-between">
                 <canvas id="my-canvas" height="500" width="500">
                 </canvas>
                 <div class="controls">
-                    <input class="input" type="text" placeholder="Enter Text">
-                    <button class="up-and-down"> <img src="Icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                    <input class="input" onclick="onEdit()" type="text" placeholder="Enter Your Text Here">
+                    <button class="up-and-down" onclick="onChangeLine()"> <img
+                            src="Icons/up-and-down-opposite-double-arrows-side-by-side.png">
                     </button>
-                    <button class="add"> <img src="Icons/add.png"> </button>
+                    <button class="add" onclick="onAddLine()"> <img src="Icons/add.png"> </button>
                     <button class="trash"> <img src="Icons/trash.png" onclick="onClearText()"> </button>
                     <button class="increase" onclick="onIncreaseFont()"> <img src="Icons/increase font - icon.png">
                     </button>
                     <button class="decrease" onclick="onDecreaseFont()"> <img src="Icons/decrease font - icon.png">
                     </button>
-                    <button class="align-to-left" id="left" onclick="onAlignText(id)"> <img src="Icons/align-to-left.png"> </button>
-                    <button class="center-text" id="center" onclick="onAlignText(id)"> <img src="Icons/center-text-alignment.png"> </button>
-                    <button class="align-to-right" id="right" onclick="onAlignText(id)"> <img src="Icons/align-to-right.png"> </button>
-                    <select class="font" name="" id=""></select>
+                    <button class="align-to-left" id="left" onclick="onAlignText(id)"> <img
+                            src="Icons/align-to-left.png"> </button>
+                    <button class="center-text" id="center" onclick="onAlignText(id)"> <img
+                            src="Icons/center-text-alignment.png"> </button>
+                    <button class="align-to-right" id="right" onclick="onAlignText(id)"> <img
+                            src="Icons/align-to-right.png"> </button>
+                    <select class="font" name="" id="" onchange="onSetFont(this.value)">
+                        <option value="Gloria">Gloria - en</option>
+                        <option value="Impact">Impact - en</option>
+                        <option value="Montserrat">Montserrat - en</option>
+                        <option value="Karantina">Karantina - he</option>
+                        <option value="Rubik">Rubik - he</option>
+                    </select>
                     <button class="text-stroke"> <img src="Icons/text-stroke.png">
                         </label>
                         <input class="btn-stroke" type="color" name="color" id="color"
                             onchange="onSetStroke(this.value)" /> </button></button>
-                    <button class="paint"> <img src="Icons/paint-board-and-brush.png"> </label>
+                    <button class="paint"> <img src="Icons/paint-board-and-brush.png">
                         <input class="btn-text" type="color" name="color" id="color"
                             onchange="onSetColor(this.value)" /> </button>
-                    <button class="download">download</button>
-                    <button class="share">share</button>
+                    <button class="download"><a href="#" onclick="onDownloadImg(this)"
+                            download="my-meme.jpg">Download</a></button>
+                    <button class="share" onclick="uploadImg()">Share</button>
+                    <button class="save" onclick="onSaveMeme()">Save</button>
+                    <button class="upload">Upload</button>
+
                 </div>
 
+
         </section>
+        <p class="user-msg"></p>
+        <div class="share-container"></div>
 
         <section id='gallery' class="gallery">
             <h1>Gallery</h1>
@@ -93,37 +113,15 @@
 
     <footer class="main-footer" id="main-footer">
         <div class="footer-container main-layout flex align-center">
-
-            <div class="team-member flex">
-                <img class="mx-auto rounded-circle" src="img/about/14.jpg" alt="">
-                <div class="info-container flex">
-                    <h4>Oren Papismedov</h4>
-                    <p class="text-muted">Full Stack Developer</p>
-                    <ul class="social-buttons flex">
-                        <li class="list-inline-item">
-                            <a target=”_blank”
-                                href="https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%9F_%D7%A4%D7%A4%D7%99%D7%A1%D7%9E%D7%93%D7%95%D7%91">
-                                <i class="fa fa-wikipedia-w"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a target=”_blank” href="https://www.facebook.com/oren.papi/">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a target=”_blank” href="https://www.linkedin.com/in/oren-papismedov-a51aba217/">
-                                <i class="fa fa-linkedin"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="logo"><img src="img/Logo/LOGO.png" alt=""> </div>
-
+            <div class="logo"><img src="img/Logo/LOGO.png" alt=""><div class="coffy-rights">
+                © coffyrights 2021 Sprint 2️
+            </div> </div>
+        
+            
     </footer>
 
 
+    <script src="js/storage-service.js"></script>
     <script src="js/main.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/gallery-service.js"></script>
