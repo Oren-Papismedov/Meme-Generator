@@ -50,6 +50,7 @@ function _renderModal(value) {
                 elModal.innerHTML= `<div class="team-member flex justify-content">
                 <img class="mx-auto rounded-circle" src="img/about/14.jpg" alt="">
                 <div class="info-container flex">
+                <p class="text-muted">Created by:</p>
                     <h4>Oren Papismedov</h4>
                     <p class="text-muted">Full Stack Developer (almost)</p>
                     <ul class="social-buttons flex">
