@@ -28,6 +28,13 @@ var gImgs = [
     { id: 24, url: 'img/img/24.jpg', keywords: ['oprah', 'happy'] },
 ]
 
+function pushImg(img) {
+    const currImg = {
+        id: gImgs.length+1,
+        url: img.src,
+    }
+    gImgs.push(currImg)
+}
 
 
 function getImgs() {

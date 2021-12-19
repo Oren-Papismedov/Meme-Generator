@@ -283,6 +283,21 @@ color: #e5e5e5;
   }
 
   /* ================== */
+/* CSS */
+
+/* input[type="upload"] {
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 11px;
+} */
+
+
+  /* ==================== */
 
 .controls .up-and-down {
     grid-area: 2/2/3/3;
@@ -397,14 +412,42 @@ color: #e5e5e5;
     margin-right: 5px;
     cursor: pointer;
 }
-.controls .upload {
+/* .controls .upload {
     grid-area: 7 /4 /8 /-2;
     border-radius: 10px;
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
     cursor: pointer;
+
+} */
+
+input[type="file"]{
+    display: none;
+
 }
+
+.custom-file-upload {
+    display: flex;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    grid-area: 7 /5 /8 /-1;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #4CAF50;;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    /* font-family: Montserrat; */
+    font-size: 20px;
+    font-style: bold;
+    
+    
+}
+
 
 .btn-text {
     width: 100%;
@@ -633,7 +676,7 @@ body.modal-open .main-content .modal .imgs-container .meme-card {
     }
 
     .controls button {
-        font-size: 14px
+        font-size: 12.5px;
     }
 
     /* hamburger */

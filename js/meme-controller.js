@@ -20,7 +20,7 @@ function onInitCanvas(elImg) {
     initMeme()
     document.querySelector('.input').value = ''
     document.querySelector('.meme-editor').style.display = 'block'
-    steImg(elImg.id)
+    steImg(elImg)
     // renderMeme()
     addListeners()
     onResizeCanvas(elImg)
@@ -240,7 +240,7 @@ function onChangeLine() {
 }
 
 function onAddLine() {
-    addLine()
+    addLine(gElCanvas.height)
     renderMeme()
     const line = getLine()
     document.querySelector('.input').value = line.txt
@@ -280,4 +280,23 @@ function onResizeCanvas(elImg) {
         gElCanvas.width = cW
         renderMeme()
     
+}
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, onPushImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader()
+
+    reader.onload = (event) => {
+        console.log('onload');
+        var img = new Image()
+        // Render on canvas
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+    }
+    console.log('after');
+    reader.readAsDataURL(ev.target.files[0])
 }

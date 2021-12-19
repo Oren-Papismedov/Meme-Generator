@@ -38,10 +38,13 @@ function initMeme() {
 }
 
 
-function steImg(imgId) {
+function steImg(elImg) {
     // console.log(imgId);
     // console.log(gMeme.selectedImgId);
-    gMeme.selectedImgId = imgId
+    gMeme.selectedImgId = elImg.id
+    const cW = (window.innerWidth < 550)? 350 : 500
+    gMeme.lines[1].y = elImg.naturalHeight*cW/elImg.naturalWidth - 20
+    
 }
 
 function getMeme() {
@@ -161,7 +164,8 @@ function changeLine() {
     // console.log(gMeme.selectedLineIdx);
 }
 
-function addLine() {
+function addLine(canvasHeight) {
+    const cW = (window.innerWidth < 550)? 350 : 500
     const newLine = {
 
         txt: '',
@@ -171,7 +175,7 @@ function addLine() {
         stroke: 'black',
         font: 'Gloria',
         x: 50,
-        y: 250,
+        y: (canvasHeight /2)+25,
         isDrag: false,
 
     }

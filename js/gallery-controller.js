@@ -12,4 +12,7 @@ function renderGallery() {
     document.querySelector('.imgs-container').innerHTML = strHtmls.join('')
     }
     
-    
+    function onPushImg(img){
+        pushImg(img)
+        renderGallery()
+    }
