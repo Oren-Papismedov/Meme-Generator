@@ -21,16 +21,19 @@ function onInitCanvas(elImg) {
     document.querySelector('.input').value = ''
     document.querySelector('.meme-editor').style.display = 'block'
     steImg(elImg.id)
-    renderMeme()
+    // renderMeme()
     addListeners()
+    onResizeCanvas(elImg)
+
 
 }
 
 function renderMeme() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
     const meme = getMeme()
-    const elIMG = document.getElementById(meme.selectedImgId)
-    gCtx.drawImage(elIMG, 0, 0, gElCanvas.width, gElCanvas.height)
+    // const elIMG = document.getElementById(meme.selectedImgId)
+    const elImg = document.querySelector(`.img${meme.selectedImgId}`)
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     const SELECTEDLINE = meme.selectedLineIdx
     meme.lines.forEach(function (line, i) {
 
@@ -262,10 +265,19 @@ function onSaveMeme(){
     alert('saved MeMe')
 }
 
-function onSetMeme(meme,elImg){
+function onSetMeme(meme){
+    const elImg = document.querySelector(`.img${meme.selectedImgId}`)
     
     onInitCanvas(elImg)
     setMeme(meme)
     renderMeme()
 }
 
+function onResizeCanvas(elImg) {
+    const cW = (window.innerWidth < 550)? 350 : 500
+    const cH = (!elImg)?cW: elImg.naturalHeight*cW/elImg.naturalWidth
+        gElCanvas.height = cH
+        gElCanvas.width = cW
+        renderMeme()
+    
+}

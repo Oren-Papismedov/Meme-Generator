@@ -84,8 +84,13 @@ function onRestoreMeme(elImg){
     // console.log(elImg)
     memes.forEach(function (meme,i) {
         // console.log(i)
-        if (i+'' === elImg.id) onSetMeme(meme,elImg)
+        if (i+'' === elImg.id) onSetMeme(meme)
     });
     toggleModal()
     
 }
+
+// function onResizeWindow(width) {
+//     // console.log(width);
+//     if (width > 550) onResizeCanvas (350,  350)
+// }

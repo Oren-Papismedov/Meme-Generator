@@ -22,7 +22,7 @@
 
 html {
     font-family: Montserrat;
-    max-width: 100%;
+    /* max-width: 100%; */
     overflow-x: hidden;
 
 }
@@ -31,8 +31,8 @@ body {
     background-color: #3E2C41;
     font-size: 1rem;
     margin: 0;
-    max-width: 100%;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
     display: grid;
     grid-template-rows: 70px 1fr 200px;
     grid-template-areas:
@@ -103,7 +103,7 @@ body.modal-open .main-screen {
     height: 70px;
     background-color: #2C061F;
     grid-area: header;
-    z-index: 5;
+    z-index: 10;
 }
 
 
@@ -114,6 +114,12 @@ body.modal-open .main-screen {
 .logo img {
     height: 42px;
     width: auto;
+}
+
+.logo a {
+    position: absolute;
+    height: 42px;
+    width: 200px;
 }
 
 .nav-container li {
@@ -164,12 +170,12 @@ body.modal-open .main-screen {
     background-color: whitesmoke;
     width: 50%;
     min-height: 501px;
-    top:  21%;
-    left: 30%;
+    top:  14.5%;
+    left: 25%;
     right: 65%;
     border: black 7px solid;
     text-align: center;
-    z-index: 10;
+    z-index: 15;
     display: none;
     transition: 1.5s
 
@@ -177,8 +183,15 @@ body.modal-open .main-screen {
 
 body.modal-open .main-content .modal{
     display: flex;
-    background-color: rgba(8, 7, 10, 0.966);
+    background-color:rgba(236, 236, 236, 0.904);
     font-size: 1.5rem;
+    /* padding-left: 4%; */
+    box-shadow: inset 0px 0px 90px rgba(156, 25, 25, 0.897);
+
+}
+
+.team-member .info-container .social-buttons a{
+    cursor: pointer;
 }
 
 input.placeholder {
@@ -227,7 +240,7 @@ color: #e5e5e5;
     cursor: pointer;
     display: flex;
     font-family: Inter,sans-serif;
-    font-size: 16px;
+    font-size: 1.2em;
     height: 48px;
     justify-content: center;
     line-height: 24px;
@@ -431,11 +444,16 @@ color: #e5e5e5;
 .gallery .imgs-container{
     display: grid;
     grid-template: auto/repeat(4, 1fr);
+
 }
 .gallery img {
-    border: 1px solid #2C061F;
+    /* border: 1px solid #2C061F; */
     max-width: 100%;
     cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .gallery img:hover {
     border: azure 5px solid;
@@ -482,7 +500,7 @@ color: #e5e5e5;
 }
 
 .team-member {
-    color: rgb(255, 255, 255);
+    
     justify-content:center;
     align-items: center;
 }
@@ -507,7 +525,7 @@ color: #e5e5e5;
 
 .info-container ul li a i {
     margin-inline-end: 30px;
-    color: rgb(190, 33, 33);
+    color: rgb(0, 0, 0);
 }
 .coffy-rights{
     color: whitesmoke;
@@ -530,7 +548,7 @@ width: 100%;
 
 body.modal-open .main-content .modal .imgs-container img {
     display: block;
-    max-width: 100%;
+    max-width: 200px;
     max-height: 250px;
 padding: 2px;
 margin: 0px auto;
@@ -541,12 +559,19 @@ flex-direction: column;
 }
 body.modal-open .main-content .modal .imgs-container .lines p{
     display: block;
-font-size: 1em;
+font-size: 1.2em;
 padding: 0px;
 margin: 2px auto;
-color: azure;
+color: rgb(0, 0, 0);
 
 }
+
+body.modal-open .main-content .modal .imgs-container .meme-card {
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
 /* ===================== */
 
 /* BREAKPOINTS */
@@ -559,10 +584,13 @@ color: azure;
     }
     .main-content .canvas-container {
         flex-direction: column;
+        /* width: 50%;
+        height: 50%; */
     }
 
     body.menu-open .controls button {
-        position: unset;
+        position: relative;
+        z-index: 4;
     }
     .main-footer {
         display: flex;
@@ -571,11 +599,22 @@ color: azure;
     }
     .gallery .imgs-container{
         grid-template: auto/repeat(2, 1fr);
+        margin-left: 3px;
+        margin-right: 3px;
+    }
 
+    .gallery .imgs-container img {
+        border: 1px solid #3E2C41;
+        
     }
 
     .main-content .modal .team-member{
         flex-direction: column;
+        /* padding-right: 15px; */
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
        
     }
     .main-content .modal{
@@ -583,14 +622,18 @@ color: azure;
         justify-content: center;
         align-items: center;
         width: fit-content;
-        top: 10%;
-        left: 20%;
+        top: 5%;
+        left: 10%;
         
     }
-    .team-member img {
-    
-        
+    .team-member img {    
+
+
         margin-left: 0%;
+    }
+
+    .controls button {
+        font-size: 14px
     }
 
     /* hamburger */
@@ -609,7 +652,7 @@ color: azure;
     
     body.menu-open .main-nav ul {
         box-shadow: 0px 0px 30px rgb(0 0 0 / 30%);
-        transform: translateX(0);
+        transform: translateX(-0);
     }
     
     .main-nav li {
@@ -635,7 +678,7 @@ color: azure;
     }
 
     .main-content .controls {
-        width: 80%;
+        width: 360px;
         height: 380px;
     }
 
@@ -682,6 +725,9 @@ color: azure;
     body.modal-open .main-content .modal .imgs-container {
         grid-template: auto/repeat(2,50%);
         }
+        .controls button {
+            font-size: 1rem;
+        }
     
     
 }
@@ -702,7 +748,9 @@ color: azure;
     body.modal-open .main-content .modal .imgs-container {
         grid-template: auto/repeat(3,33%);
         }
-    
+        .controls button {
+            font-size: 1.2rem;
+        }
 
 }
 
