@@ -75,9 +75,14 @@ function setClearText() {
     // gMeme.lines[gMeme.selectedLineIdx].txt = ''
     const isSure = confirm("Are You Sure ?")
     if (isSure) {
-        const imgId = gMeme.selectedImgId
-        initMeme()
-        steImg(imgId)
+        gMeme.lines.forEach(function(line) {
+            line.txt = ''
+        });
+        setEdit(false)
+        
+        // const imgId = gMeme.selectedImgId
+        // initMeme()
+        // steImg(imgId)
         // const lines = gMeme.lines
         // lines.forEach(function (line) {
         //     line.txt = ''
