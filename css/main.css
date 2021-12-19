@@ -665,11 +665,11 @@ body.modal-open .main-content .modal .imgs-container .meme-card {
         justify-content: center;
         align-items: center;
         width: fit-content;
-        top: 5%;
+        top: 0%;
         left: 10%;
         
     }
-    .team-member img {    
+    .team-member img {  
 
 
         margin-left: 0%;
